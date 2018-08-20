@@ -111,5 +111,9 @@ alias dcu="docker-compose up $@"
 alias dcr="docker-compose run --service-ports $@"
 alias dcd="docker-compose down $@"
 alias dcb="docker-compose build $@"
-alias gs="git status $@"
 alias clip="xclip -selection clipboard $@"
+
+alias gs="git status $@"
+git config --global alias.co checkout
+git config --global alias.c commit
+git config --global alias.recent-branches "for-each-ref --count=30 --sort=committerdate refs/heads/ --format='%(refname:short)'"
