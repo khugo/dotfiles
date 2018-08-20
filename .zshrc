@@ -111,6 +111,8 @@ alias dcu="docker-compose up $@"
 alias dcr="docker-compose run --service-ports $@"
 alias dcd="docker-compose down $@"
 alias dcb="docker-compose build $@"
+
+alias vim=nvim
 alias clip="xclip -selection clipboard $@"
 
 alias gs="git status $@"
