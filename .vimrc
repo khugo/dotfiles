@@ -60,6 +60,7 @@ inoremap <right> <nop>
 
 " Creating split
 nnoremap <leader>vs <C-w>v<C-w>l
+nnoremap <leader>hs <C-w><C-s>
 
 " Switching splits
 nnoremap <C-h> <C-w>h
