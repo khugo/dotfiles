@@ -34,8 +34,10 @@ set gdefault " Replace all occurences on the line
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 set showmatch
-" turn off search highlight
+" Turn off search highlight
 nnoremap <leader><space> :noh<cr>
+" Search for highlighted text
+vnoremap // y/<C-R>"<CR>
 
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
