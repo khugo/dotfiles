@@ -48,7 +48,6 @@ set foldmethod=indent " fold based on indent level
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
 
 " Unmap pleb keys
 nnoremap <up> <nop>
