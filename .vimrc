@@ -4,6 +4,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 syntax on
@@ -174,3 +175,9 @@ autocmd FileType nerdtree setlocal relativenumber
 
 " OPTIONAL: Make the update time shorter, so the type info will trigger faster.
 " set updatetime=1000
+
+" Run Neoformat on save
+augroup fmt
+  autocmd!
+  au FileType haskell autocmd BufWritePre * undojoin | Neoformat
+augroup END
