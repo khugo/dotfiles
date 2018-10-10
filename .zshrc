@@ -2,7 +2,7 @@
 export PATH=/home/khugo/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/khugo/.oh-my-zsh"
+export ZSH="/home/khugo/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -119,3 +119,9 @@ alias gs="git status $@"
 git config --global alias.co checkout
 git config --global alias.c commit
 git config --global alias.recent-branches "for-each-ref --count=30 --sort=committerdate refs/heads/ --format='%(refname:short)'"
+
+# Path additions
+PATH="$PATH:$HOME/notes/.bin"
+
+# Zsh completions
+fpath=(~/notes/.bin $fpath)
