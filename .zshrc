@@ -7,7 +7,7 @@ export ZSH="/home/khugo/.oh-my-zsh"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="lambda"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -104,6 +104,17 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# Zsh vim settings https://dougblack.io/words/zsh-vi-mode.html
+bindkey -v
+export KEYTIMEOUT=1 # Reduce delay of switching between modes
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # Aliases
 alias sudo='sudo ' # Keep aliases when running with sudo
@@ -112,7 +123,6 @@ alias dcr="docker-compose run --service-ports $@"
 alias dcd="docker-compose down $@"
 alias dcb="docker-compose build $@"
 
-alias vim=nvim
 alias clip="xclip -selection clipboard $@"
 
 alias gs="git status $@"
