@@ -135,14 +135,15 @@ RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
 
 # Better searching in command mode
- bindkey -M vicmd '?' history-incremental-search-backward
- bindkey -M vicmd '/' history-incremental-search-forward
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
 
-# # Beginning search with arrow keys
- bindkey "^[OA" up-line-or-beginning-search
- bindkey "^[OB" down-line-or-beginning-search
- bindkey -M vicmd "k" up-line-or-beginning-search
- bindkey -M vicmd "j" down-line-or-beginning-search
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
 # Aliases
 alias sudo='sudo ' # Keep aliases when running with sudo
 alias dcu="docker-compose up $@"
@@ -153,9 +154,6 @@ alias dcb="docker-compose build $@"
 alias clip="xclip -selection clipboard $@"
 
 alias gs="git status $@"
-git config --global alias.co checkout
-git config --global alias.c commit
-git config --global alias.recent-branches "for-each-ref --count=30 --sort=committerdate refs/heads/ --format='%(refname:short)'"
 
 # Path additions
 PATH="$PATH:$HOME/notes/.bin"

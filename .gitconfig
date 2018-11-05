@@ -1,0 +1,17 @@
+[alias]
+    co = checkout
+    c = commit
+    cp = cherry-pick
+    a = add
+    aa = add .
+    am = commit --amend
+    amh = commit --amend -C HEAD
+    recent-branches = for-each-ref --count=30 --sort=committerdate refs/heads/ --format='%(refname:short)' 
+	add-untracked = git ls-files -o --exclude-standard -z | xargs -0 git add
+
+[user]
+	name = Hugo Kiiski
+	email = kiiskihugo@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+	precomposeUnicode = true
