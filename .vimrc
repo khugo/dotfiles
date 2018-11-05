@@ -13,7 +13,7 @@ syntax on
 filetype plugin indent on
 colorscheme molokai
 
-let mapleader="," " leader is ,
+let mapleader=" "
 
 set nocompatible " Disable vi compability
 set modelines=0 " Security fixes
@@ -96,11 +96,6 @@ nnoremap gV `[v`]
 
 " edit vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
-" save session
-nnoremap <leader>s :mksession<CR>
-" save
-nnoremap <leader>w :w<CR>
-nnoremap <leader>wq :wq<CR>
 
 " Terminal mode commands
 "tnoremap <Esc> <C-\><C-n>
@@ -186,19 +181,12 @@ augroup END
 " set updatetime=1000
 "
 " Easymotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_do_mapping = 0  "Disable default mappings
+map <Leader> <Plug>(easymotion-prefx)
 
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
 nmap s <Plug>(easymotion-overwin-f2)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
+map <Leader>w <Plug>(easymotion-wl)
+map <Leader>f <Plug>(easymotion-f)
+map <Leader>F <Plug>(easymotion-F)
+map <Leader>t <Plug>(easymotion-t)
+map <Leader>T <Plug>(easymotion-T)
