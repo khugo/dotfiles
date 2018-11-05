@@ -36,6 +36,8 @@ set wildmenu " visual autocomplete for command menu
 set lazyredraw " redraw only when needed
 set showmatch " highlight matching [{(
 
+set backspace=indent,eol,start " Fix backspace magically
+
 " Turn off vim regex syntax
 nnoremap / /\v
 vnoremap / /\v
@@ -101,7 +103,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>wq :wq<CR>
 
 " Terminal mode commands
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
 
 " CtrlP
 let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom with ttb
