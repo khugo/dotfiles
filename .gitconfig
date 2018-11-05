@@ -6,6 +6,7 @@
     aa = add .
     am = commit --amend
     amh = commit --amend -C HEAD
+    p = push
     recent-branches = for-each-ref --count=30 --sort=committerdate refs/heads/ --format='%(refname:short)' 
 	add-untracked = git ls-files -o --exclude-standard -z | xargs -0 git add
 
@@ -15,3 +16,5 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	precomposeUnicode = true
+[push]
+	default = current
