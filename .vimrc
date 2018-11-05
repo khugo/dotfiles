@@ -107,7 +107,7 @@ tnoremap <Esc> <C-\><C-n>
 let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom with ttb
 let g:ctrlp_switch_buffer = 0 " always open files in new buffers
 let g:ctrlp_working_path_mode = 0 " allow changing working directory during a session
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""' " use ag for matching
+let g:ctrlp_user_command = ['.git', 'cd %s && rg --files-with-matches ".*"', 'find %s -type f']
 
 " Backups
 set backup
