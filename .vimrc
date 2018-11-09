@@ -7,6 +7,9 @@ Plug 'tpope/vim-surround'
 Plug 'sbdchd/neoformat'
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 syntax on
@@ -193,3 +196,8 @@ map <Leader>f <Plug>(easymotion-f)
 map <Leader>F <Plug>(easymotion-F)
 map <Leader>t <Plug>(easymotion-t)
 map <Leader>T <Plug>(easymotion-T)
+
+" Airline
+set noshowmode
+let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
