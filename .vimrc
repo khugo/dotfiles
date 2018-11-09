@@ -11,7 +11,9 @@ call plug#end()
 
 syntax on
 filetype plugin indent on
-colorscheme molokai
+colorscheme breezy
+set termguicolors
+set background=light
 
 let mapleader=" "
 
@@ -26,6 +28,7 @@ set autoindent
 
 set relativenumber " show relative line numbers
 set cursorline " show cursorline
+hi CursorLine   cterm=NONE " no underline
 
 set showcmd " show last command in bottom bar
 set showmode " show mode in bottom bar
