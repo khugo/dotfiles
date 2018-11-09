@@ -191,11 +191,12 @@ let g:EasyMotion_do_mapping = 0  "Disable default mappings
 map <Leader> <Plug>(easymotion-prefx)
 
 nmap s <Plug>(easymotion-overwin-f2)
-map <Leader>w <Plug>(easymotion-wl)
-map <Leader>f <Plug>(easymotion-f)
+map <Leader>w <Plug>(easymotion-wl) map <Leader>f <Plug>(easymotion-f)
 map <Leader>F <Plug>(easymotion-F)
 map <Leader>t <Plug>(easymotion-t)
 map <Leader>T <Plug>(easymotion-T)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 " Airline
 set noshowmode
