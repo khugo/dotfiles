@@ -157,5 +157,7 @@ let g:airline_powerline_fonts=1
 
 augroup TypeScript
   au!
-  autocmd FileType typescript nnoremap <Leader>d :echo tsuquyomi#hint()<CR>
+  autocmd FileType typescript nnoremap <Leader>ct :echo tsuquyomi#hint()<CR>
+  autocmd FileType typescript nnoremap <Leader>ce :TsuGeterr<CR>
 augroup END
+let g:tsuquyomi_disable_quickfix = 1 " Disable type check on save
