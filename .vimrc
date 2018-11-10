@@ -13,11 +13,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'osyo-manga/vim-over'
+Plug 'koirand/tokyo-metro.vim', { 'as': 'tokyo-metro' }
 call plug#end()
 
 syntax on
 filetype plugin indent on
-colorscheme molokai
+colorscheme tokyo-metro
 set termguicolors
 
 let mapleader=" "
