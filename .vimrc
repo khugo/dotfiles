@@ -10,22 +10,24 @@ Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'osyo-manga/vim-over'
 call plug#end()
 
 syntax on
 filetype plugin indent on
-colorscheme breezy
+colorscheme molokai
 set termguicolors
-set background=light
 
 let mapleader=" "
 
 set nocompatible " Disable vi compability
 set modelines=0 " Security fixes
 
-set tabstop=4 " number of visual spaces per TAB
-set softtabstop=4 " number of spaces in tab when editing
-set shiftwidth=4
+set tabstop=2 " number of visual spaces per TAB
+set softtabstop=2 " number of spaces in tab when editing
+set shiftwidth=2
 set expandtab " tabs are spaces
 set autoindent
 
@@ -54,9 +56,12 @@ set incsearch " search as characters are entered
 set hlsearch " highlight matches
 set showmatch
 " Turn off search highlight
-nnoremap <leader><space> :noh<cr>
+nnoremap ,<leader> :noh<cr>
 " Search for highlighted text
 vnoremap // y/<C-R>"<CR>
+" vim-over settings 
+cabbrev %s OverCommandLine<cr>%s
+cabbrev '<,'>s OverCommandLine<cr>'<,'>s
 
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
@@ -191,7 +196,8 @@ let g:EasyMotion_do_mapping = 0  "Disable default mappings
 map <Leader> <Plug>(easymotion-prefx)
 
 nmap s <Plug>(easymotion-overwin-f2)
-map <Leader>w <Plug>(easymotion-wl) map <Leader>f <Plug>(easymotion-f)
+map <Leader>w <Plug>(easymotion-wl)
+map <Leader>f <Plug>(easymotion-f)
 map <Leader>F <Plug>(easymotion-F)
 map <Leader>t <Plug>(easymotion-t)
 map <Leader>T <Plug>(easymotion-T)
@@ -201,4 +207,9 @@ map <Leader>k <Plug>(easymotion-k)
 " Airline
 set noshowmode
 let g:airline_theme='deus'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts=1
+
+augroup TypeScript
+  au!
+  autocmd FileType typescript nnoremap <Leader>d :echo tsuquyomi#hint()<CR>
+augroup END
