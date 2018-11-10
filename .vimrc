@@ -127,9 +127,6 @@ set writebackup
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = 'v'
-" enable line numbers
 let NERDTreeShowLineNumbers=1
 " make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
