@@ -12,8 +12,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'osyo-manga/vim-over'
 Plug 'koirand/tokyo-metro.vim', { 'as': 'tokyo-metro' }
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 syntax on
@@ -42,7 +45,7 @@ set undofile " make undofiles
 set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 set wildmenu " visual autocomplete for command menu
-set lazyredraw " redraw only when needed
+"set lazyredraw " redraw only when needed
 set showmatch " highlight matching [{(
 
 set backspace=indent,eol,start " Fix backspace magically
@@ -50,6 +53,7 @@ set backspace=indent,eol,start " Fix backspace magically
 " Turn off vim regex syntax
 nnoremap / /\v
 vnoremap / /\v
+vnoremap // y/\V<C-R>"<CR> " Search for visual selection
 set ignorecase " Ignore case by default
 set smartcase " Case sensitive if contains uppercase
 set gdefault " Replace all occurences on the line
@@ -63,6 +67,9 @@ vnoremap // y/<C-R>"<CR>
 " vim-over settings 
 cabbrev %s OverCommandLine<cr>%s
 cabbrev '<,'>s OverCommandLine<cr>'<,'>s
+
+" allow the . to execute once for each line of a visual selection
+vnoremap . :normal .<CR>
 
 set foldenable " enable folding
 set foldlevelstart=10 " open most folds by default
@@ -110,7 +117,7 @@ nnoremap gV `[v`]
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 
 " Terminal mode commands
-"tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 
 " CtrlP
 let g:ctrlp_match_window = 'bottom,order:ttb' " order matching files top to bottom with ttb
@@ -134,7 +141,10 @@ autocmd FileType nerdtree setlocal relativenumber
 " Run Neoformat on save
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.hs undojoin | Neoformat
+  " Ignore undojoin errors
+  autocmd BufWritePre *.hs try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+  autocmd BufWritePre *.ts try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+  autocmd BufWritePre *.tsx try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 augroup END
 
 " Easymotion
@@ -142,11 +152,11 @@ let g:EasyMotion_do_mapping = 0  "Disable default mappings
 map <Leader> <Plug>(easymotion-prefx)
 
 nmap s <Plug>(easymotion-overwin-f2)
-map <Leader>w <Plug>(easymotion-wl)
-map <Leader>f <Plug>(easymotion-f)
-map <Leader>F <Plug>(easymotion-F)
-map <Leader>t <Plug>(easymotion-t)
-map <Leader>T <Plug>(easymotion-T)
+map <Leader> w <Plug>(easymotion-wl)
+map f <Plug>(easymotion-fl)
+map F <Plug>(easymotion-Fl)
+map t <Plug>(easymotion-tl)
+map T <Plug>(easymotion-Tl)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
@@ -159,5 +169,21 @@ augroup TypeScript
   au!
   autocmd FileType typescript nnoremap <Leader>ct :echo tsuquyomi#hint()<CR>
   autocmd FileType typescript nnoremap <Leader>ce :TsuGeterr<CR>
+  " set filetypes as typescript.tsx
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+  " dark red
+  hi tsxTagName guifg=#E06C75
+
+  " orange
+  hi tsxCloseString guifg=#F99575
+  hi tsxCloseTag guifg=#F99575
+  hi tsxAttributeBraces guifg=#F99575
+  hi tsxEqual guifg=#F99575
+
+  " yellow
+  hi tsxAttrib guifg=#F8BD7F cterm=italic
+
 augroup END
 let g:tsuquyomi_disable_quickfix = 1 " Disable type check on save
+
+let g:polyglot_disabled = ['typescript', 'typescript.tsx']
