@@ -81,3 +81,4 @@
 
 (setq doom-line-numbers-style 'relative)
 (setq neo-window-fixed-size nil)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
