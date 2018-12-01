@@ -118,7 +118,7 @@ export EDITOR=vim
 #
 # Zsh vim settings https://dougblack.io/words/zsh-vi-mode.html
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
-bindkey -v
+# bindkey -v
 export KEYTIMEOUT=1 # Reduce delay of switching between modes
 
 # Updates editor information when the keymap changes.
