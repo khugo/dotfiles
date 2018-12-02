@@ -45,10 +45,6 @@
     :references #'tide-references
     :documentation #'tide-documentation-at-point)
 
-  (setq tide-format-options
-        '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
-          :placeOpenBraceOnNewLineForFunctions nil))
-
   (defun +typescript|init-tide ()
     (when (or (eq major-mode 'typescript-mode)
               (and (eq major-mode 'web-mode)
