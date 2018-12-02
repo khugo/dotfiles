@@ -11,6 +11,7 @@
      (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
 
 ;; Org
+(setq org-default-notes-file (expand-file-name "~/Dropbox/org/todo.org"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
 (add-hook 'org-mode-hook
@@ -25,6 +26,17 @@
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
+(setq org-capture-templates
+       '(("t" "todo" entry (file org-default-notes-file)
+	  "* TODO %?\n%u\n%a\n" :clock-in t :clock-resume t)
+	 ("m" "Meeting" entry (file org-default-notes-file)
+	  "* MEETING with %? :MEETING:\n%t" :clock-in t :clock-resume t)
+	 ("d" "Diary" entry (file+datetree "~/org/diary.org")
+	  "* %?\n%U\n" :clock-in t :clock-resume t)
+	 ("i" "Idea" entry (file org-default-notes-file)
+	  "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
+	 ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
+	  "** NEXT %? \nDEADLINE: %t") ))
 
 ;; TypeScript
 (def-package! typescript-mode
@@ -50,11 +62,6 @@
   :after typescript-mode
   :config
   (set! :company-backend 'typescript-mode '(company-tide))
-  (set! :jump 'typescript-mode
-    :definition #'tide-jump-to-definition
-    :references #'tide-references
-    :documentation #'tide-documentation-at-point)
-
   (defun +typescript|init-tide ()
     (when (or (eq major-mode 'typescript-mode)
               (and (eq major-mode 'web-mode)
