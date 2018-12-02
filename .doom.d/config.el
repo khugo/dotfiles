@@ -15,6 +15,16 @@
 (setq org-agenda-files '("~/Dropbox/org/"))
 (add-hook 'org-mode-hook
           (lambda () (local-key-set (kbd "C-M-return") 'org-insert-subheading)))
+(setq org-agenda-custom-commands
+      '(("c" "Simple agenda view"
+         ((tags "PRIORITY=\"A\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
+          (agenda "")
+          (alltodo "")))))
+(setq org-agenda-start-day "-1d")
+(setq org-agenda-start-on-weekday nil)
+(setq org-agenda-span 5)
 
 ;; TypeScript
 (def-package! typescript-mode
