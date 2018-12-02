@@ -59,6 +59,8 @@
       (eldoc-mode +1)
       (setq tide-project-root (doom-project-root))))
   (add-hook! (typescript-mode web-mode) #'+typescript|init-tide))
+
 ;; Use prettier_d for faster formatting
 (setq prettier-js-command "prettier_d")
-(add-hook 'typescript-mode-hook 'prettier-js-mode)
+(setq prettier-js-args '("--pkg-conf"))
+(add-hook! (typescript-mode web-mode) #'prettier-js-mode)
