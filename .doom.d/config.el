@@ -1,8 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
-(setq doom-line-numbers-style 'relative)
-(setq neo-window-fixed-size nil)
+(setq display-line-numbers-type 'relative)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (eval-after-load "evil"
   '(progn
