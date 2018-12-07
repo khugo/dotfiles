@@ -79,3 +79,12 @@
 (setq prettier-js-command "prettier_d")
 (setq prettier-js-args '("--pkg-conf"))
 (add-hook! (typescript-mode web-mode) #'prettier-js-mode)
+
+;; Keybindings
+(map! :leader
+      (:desc "file" :prefix "f"
+        :desc "Find in files"             :n "s" #'helm-do-ag
+        )
+      (:desc "git" :prefix "g"
+        :desc "Branch popup"              :n "b"  #'magit-branch-popup
+        ))
