@@ -80,6 +80,9 @@
 (setq prettier-js-args '("--pkg-conf"))
 (add-hook! (typescript-mode web-mode) #'prettier-js-mode)
 
+(defun org-find-file () (interactive)
+  (helm-find-files-1 "~/Dropbox/org/"))
+
 ;; Keybindings
 (map! :leader
       (:desc "file" :prefix "f"
@@ -87,4 +90,6 @@
         )
       (:desc "git" :prefix "g"
         :desc "Branch popup"              :n "b"  #'magit-branch-popup
-        ))
+        )
+      (:desc "org" :prefix "o"
+        :desc "Find org file"             :n "." #'org-find-file))
