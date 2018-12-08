@@ -92,4 +92,5 @@
         :desc "Branch popup"              :n "b"  #'magit-branch-popup
         )
       (:desc "org" :prefix "o"
-        :desc "Find org file"             :n "." #'org-find-file))
+        :desc "Find org file"             :n "." #'org-find-file
+        :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers))
