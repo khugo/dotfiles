@@ -13,11 +13,11 @@
 (setq mac-option-modifier nil)
 
 ;; Org
-(setq org-default-notes-file (expand-file-name "~/Dropbox/org/todo.org"))
+(setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
-(add-hook 'org-mode-hook
-          (lambda () (local-key-set (kbd "C-M-return") 'org-insert-subheading)))
+;; (add-hook 'org-mode-hook
+;;           (lambda () (local-key-set (kbd "C-M-return") 'org-insert-subheading)))
 (setq org-agenda-custom-commands
       '(("c" "Simple agenda view"
          ((tags "PRIORITY=\"A\""
