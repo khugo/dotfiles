@@ -28,16 +28,12 @@
           (tags-todo "-REFILE-read/!"
                 ((org-agenda-overriding-header "Standalone tasks:")
                 (org-agenda-skip-function 'bh/skip-project-tasks)
-                (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
-                ;; (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
-                ;; (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
-                (org-agenda-sorting-strategy '(category-keep))
-                ))
+                (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)))
           (tags-todo "-HOLD-CANCELLED/!"
                 ((org-agenda-overriding-header "Projects:")
                 (org-agenda-skip-function 'bh/skip-non-projects)
                 ;; (org-tags-match-list-sublevels 'indented)
-                (org-agenda-sorting-strategy '(category-keep))))
+                ))
           (tags-todo "+read"
                 ((org-agenda-overriding-header "Reading list:")))))))
 (setq org-agenda-start-day "-1d")
