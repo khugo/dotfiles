@@ -39,8 +39,7 @@
                 ;; (org-tags-match-list-sublevels 'indented)
                 (org-agenda-sorting-strategy '(category-keep))))
           (tags-todo "+read"
-                ((org-agenda-overriding-header "Reading list:")))
-          (alltodo "")))))
+                ((org-agenda-overriding-header "Reading list:")))))))
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
