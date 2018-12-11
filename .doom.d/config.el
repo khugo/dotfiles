@@ -31,8 +31,6 @@
 	  "* TODO %?\n%u\n%a\n" :clock-in t :clock-resume t)
 	 ("m" "Meeting" entry (file org-default-notes-file)
 	  "* MEETING with %? :MEETING:\n%t" :clock-in t :clock-resume t)
-	 ("d" "Diary" entry (file+datetree "~/org/diary.org")
-	  "* %?\n%U\n" :clock-in t :clock-resume t)
 	 ("i" "Idea" entry (file org-default-notes-file)
 	  "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
 	 ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
