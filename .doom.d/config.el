@@ -25,7 +25,7 @@
       '(("c" "Simple agenda view"
          ((tags-todo "-CANCELLED/!NEXT"
                 ((org-agenda-overriding-header "Next tasks:")))
-          (tags-todo "-REFILE-read/!"
+          (tags-todo "-REFILE-read/!-NEXT"
                 ((org-agenda-overriding-header "Standalone tasks:")
                 (org-agenda-skip-function 'bh/skip-project-tasks)
                 (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)))
