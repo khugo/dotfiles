@@ -53,6 +53,7 @@
 	  "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
 	 ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
 	  "** NEXT %? \nDEADLINE: %t") ))
+(add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 ;; TypeScript
 (def-package! typescript-mode
