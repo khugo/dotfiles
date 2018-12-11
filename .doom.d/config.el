@@ -1,6 +1,8 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
+(load-file "./bh.el")
+
 (setq display-line-numbers-type 'relative)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (eval-after-load "evil"
@@ -13,6 +15,7 @@
 (setq mac-option-modifier nil)
 
 ;; Org
+(require 'org-habit)
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
@@ -22,6 +25,21 @@
       '(("c" "Simple agenda view"
          ((tags-todo "-CANCELLED/!NEXT"
                 ((org-agenda-overriding-header "Next tasks:")))
+          (tags-todo "-REFILE-read/!"
+                ((org-agenda-overriding-header "Standalone tasks:")
+                (org-agenda-skip-function 'bh/skip-project-tasks)
+                (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)
+                ;; (org-agenda-todo-ignore-deadlines bh/hide-scheduled-and-waiting-next-tasks)
+                ;; (org-agenda-todo-ignore-with-date bh/hide-scheduled-and-waiting-next-tasks)
+                (org-agenda-sorting-strategy '(category-keep))
+                ))
+          (tags-todo "-HOLD-CANCELLED/!"
+                ((org-agenda-overriding-header "Projects:")
+                (org-agenda-skip-function 'bh/skip-non-projects)
+                ;; (org-tags-match-list-sublevels 'indented)
+                (org-agenda-sorting-strategy '(category-keep))))
+          (tags-todo "+read"
+                ((org-agenda-overriding-header "Reading list:")))
           (alltodo "")))))
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
