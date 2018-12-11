@@ -96,7 +96,7 @@
 ;; Keybindings
 (map! :leader
       (:desc "file" :prefix "f"
-        :desc "Find in files"             :n "s" #'helm-do-ag
+        :desc "Find in files"             :n "s" #'helm-do-ag-project-root
         )
       (:desc "git" :prefix "g"
         :desc "Branch popup"              :n "b"  #'magit-branch-popup
