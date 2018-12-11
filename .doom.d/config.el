@@ -108,4 +108,5 @@
         )
       (:desc "org" :prefix "o"
         :desc "Find org file"             :n "." #'org-find-file
-        :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers))
+        :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers)
+      (:desc "toggle" :prefix "t"         :n "w" #'toggle-truncate-lines))
