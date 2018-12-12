@@ -156,6 +156,7 @@ alias dcb="docker-compose build $@"
 alias clip="xclip -selection clipboard $@"
 
 alias gs="git status $@"
+alias tmux="TERM=screen-256color-bce tmux"
 
 # Path additions
 PATH="$PATH:$HOME/notes/.bin"
