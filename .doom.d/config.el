@@ -35,7 +35,9 @@
                 ;; (org-tags-match-list-sublevels 'indented)
                 ))
           (tags-todo "+read"
-                ((org-agenda-overriding-header "Reading list:")))))))
+                ((org-agenda-overriding-header "Reading list:")))
+          (tags-todo "+hobby"
+                ((org-agenda-overriding-header "Hobby tasks:")))))))
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
