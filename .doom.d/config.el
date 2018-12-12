@@ -1,7 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
-(load-file "./bh.el")
+(load-file "~/.doom.d/bh.el")
 
 (setq display-line-numbers-type 'relative)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
