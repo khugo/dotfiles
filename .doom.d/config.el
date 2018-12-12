@@ -103,7 +103,8 @@
       (:desc "git" :prefix "g"
         :desc "Branch popup"              :n "b"  #'magit-branch-popup
         )
-      (:desc "org" :prefix "o"
+      (:desc "open / org" :prefix "o"
         :desc "Find org file"             :n "." #'org-find-file
-        :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers)
+        :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers
+        :desc "Open shell in project"     :n "t" #'projectile-run-shell)
       (:desc "toggle" :prefix "t"         :n "w" #'toggle-truncate-lines))
