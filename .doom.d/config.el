@@ -4,6 +4,7 @@
 (load-file "~/.doom.d/bh.el")
 
 (setq display-line-numbers-type 'relative)
+(setq tab-width 2)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (eval-after-load "evil"
   '(progn
@@ -14,6 +15,10 @@
 (setq mac-function-modifier 'meta)
 (setq mac-option-modifier nil)
 
+(setq treemacs-indentation 1)
+
+(setq evil-snipe-scope 'buffer)
+
 ;; Org
 (require 'org-habit)
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
@@ -23,9 +28,9 @@
 ;;           (lambda () (local-key-set (kbd "C-M-return") 'org-insert-subheading)))
 (setq org-agenda-custom-commands
       '(("c" "Simple agenda view"
-         ((tags-todo "-CANCELLED/!NEXT"
+         ((tags-todo "-CANCELLED-hobby/!NEXT"
                 ((org-agenda-overriding-header "Next tasks:")))
-          (tags-todo "-REFILE-read/!-NEXT"
+          (tags-todo "-REFILE-read-hobby/!-NEXT"
                 ((org-agenda-overriding-header "Standalone tasks:")
                 (org-agenda-skip-function 'bh/skip-project-tasks)
                 (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)))
