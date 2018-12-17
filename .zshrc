@@ -98,12 +98,10 @@ if [[ "$USER" != "hugokiiski" ]]; then
     # ssh-add ~/.ssh/id_rsa
 fi
 
-if [[ "$USER" == "hugokiiski" ]]; then
-    LC_CTYPE="en_US.UTF-8"
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-    nvm use 8
-fi
+eval "$(rbenv init -)"
+source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 export EDITOR=vim
 
