@@ -9,3 +9,4 @@
 (package! tide)
 (package! typescript-mode)
 (package! prettier-js)
+(package! buffer-move)
