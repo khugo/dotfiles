@@ -47,14 +47,10 @@
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
 (setq org-capture-templates
-       '(("t" "todo" entry (file org-default-notes-file)
-	  "* TODO %?\n%u\n%a\n" :clock-in t :clock-resume t)
-	 ("m" "Meeting" entry (file org-default-notes-file)
-	  "* MEETING with %? :MEETING:\n%t" :clock-in t :clock-resume t)
-	 ("i" "Idea" entry (file org-default-notes-file)
-	  "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
-	 ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
-	  "** NEXT %? \nDEADLINE: %t") ))
+    '(("t" "Todo" entry (file org-default-notes-file)
+    "* TODO %?\n%u\n%a\n" :clock-in t :clock-resume t)
+      ("n" "Next" entry (file org-default-notes-file)
+       "* NEXT %?\n%u\n%a\n", :clock-in t :clock-resume t)))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 ;; TypeScript
