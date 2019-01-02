@@ -11,7 +11,13 @@
      (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
      (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
      (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)))
+     (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+     ;; Make evil-mode up/down operate in screen lines instead of logical lines
+     (define-key evil-motion-state-map "j" 'evil-next-visual-line)
+     (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+     ;; Also in visual mode
+     (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+     (define-key evil-visual-state-map "k" 'evil-previous-visual-line)))
 (setq mac-function-modifier 'meta)
 (setq mac-option-modifier nil)
 
