@@ -18,3 +18,5 @@
 	precomposeUnicode = true
 [push]
 	default = current
+[github]
+	user = khugo
