@@ -115,3 +115,6 @@
         :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers
         :desc "Open shell in project"     :n "t" #'projectile-run-shell)
       (:desc "toggle" :prefix "t"         :n "w" #'toggle-truncate-lines))
+
+(require 'helm-descbinds)
+(helm-descbinds-mode)

@@ -10,3 +10,4 @@
 (package! typescript-mode)
 (package! prettier-js)
 (package! buffer-move)
+(package! helm-descbinds)
