@@ -56,7 +56,7 @@
     '(("t" "Todo" entry (file org-default-notes-file)
     "* TODO %?\n%u\n" :clock-in t :clock-resume t)
       ("n" "Next" entry (file org-default-notes-file)
-       "* NEXT %?\n%u\n%a\n", :clock-in t :clock-resume t)))
+       "* NEXT %?\n%u\n", :clock-in t :clock-resume t)))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 ;; TypeScript
