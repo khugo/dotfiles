@@ -173,6 +173,7 @@ bindsym $mod+m move workspace to output left
 
 exec "xset r rate 300 30" # Keyboard repeat rate
 exec --no-startup-id compton --config ~/.config/compton.conf -b
+# exec "xrandr --output HDMI-1-1 --auto --right-of DVI-I-1 --rotate left"
 
 gaps inner 7
 new_window 1pixel # Disable titlebar
