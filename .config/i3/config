@@ -144,10 +144,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -169,11 +169,13 @@ bar {
         status_command i3status
 }
 
-exec "setxkbmap -option caps:escape"
-exec "setxkbmap -layout fi -variant nodeadkeys"
+bindsym $mod+m move workspace to output left
+
 exec "xset r rate 300 30" # Keyboard repeat rate
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 
 gaps inner 7
 new_window 1pixel # Disable titlebar
 exec "feh --bg-scale ~/wallpapers/rain.jpg"
+
+exec --no-startup-id "setxkbmap -layout fi -variant nodeadkeys -option caps:escape"
