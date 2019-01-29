@@ -36,7 +36,7 @@
       '(("c" "Simple agenda view"
          ((tags-todo "-CANCELLED-hobby/!NEXT"
                 ((org-agenda-overriding-header "Next tasks:")))
-          (tags-todo "-HOLD-CANCELLED/!"
+          (tags-todo "-HOLD-CANCELLED-hobby/!"
                 ((org-agenda-overriding-header "Projects:")
                 (org-agenda-skip-function 'bh/skip-non-projects)
                 ;; (org-tags-match-list-sublevels 'indented)
