@@ -105,16 +105,15 @@
 ;; Keybindings
 (map! :leader
       (:desc "file" :prefix "f"
-        :desc "Find in files"             :n "s" #'helm-do-ag-project-root
-        )
+        :desc "Find in files"                          :n "s" #'helm-do-ag-project-root)
       (:desc "git" :prefix "g"
-        :desc "Branch popup"              :n "b"  #'magit-branch-popup
-        )
+        :desc "Branch popup"                           :n "b"  #'magit-branch-popup)
       (:desc "open / org" :prefix "o"
-        :desc "Find org file"             :n "." #'org-find-file
-        :desc "Save org buffers"          :n "s" #'org-save-all-org-buffers
-        :desc "Open shell in project"     :n "t" #'projectile-run-shell)
-      (:desc "toggle" :prefix "t"         :n "w" #'toggle-truncate-lines))
+        :desc "Find org file"                          :n "." #'org-find-file
+        :desc "Save org buffers"                       :n "s" #'org-save-all-org-buffers
+        :desc "Open shell in project"                  :n "t" #'projectile-run-shell)
+      (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
+      (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
 (require 'helm-descbinds)
 (helm-descbinds-mode)
@@ -131,3 +130,28 @@
         (set-marker m nil))
     ad-do-it))
 
+(defun toggle-window-split ()
+  "Toggle between horizontal and vertical split"
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
