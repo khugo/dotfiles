@@ -1,11 +1,32 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here
 (load-file "~/.doom.d/bh.el")
 
 (setq display-line-numbers-type 'relative)
 (setq tab-width 2)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq mac-function-modifier 'meta)
+(setq mac-option-modifier nil)
+
+(setq treemacs-indentation 1)
+(setq evil-snipe-scope 'buffer)
+
+(require 'helm-descbinds)
+(helm-descbinds-mode)
+
+;; Keybindings
+(map! :leader
+      (:desc "file" :prefix "f"
+        :desc "Find in files"                          :n "s" #'helm-do-ag-project-root
+        :desc "Rename current file"                    :n "n" #'rename-current-buffer-file)
+      (:desc "git" :prefix "g"
+        :desc "Branch popup"                           :n "b"  #'magit-branch-popup)
+      (:desc "open / org" :prefix "o"
+        :desc "Find org file"                          :n "." #'org-find-file
+        :desc "Save org buffers"                       :n "s" #'org-save-all-org-buffers
+        :desc "Open shell in project"                  :n "t" #'projectile-run-shell)
+      (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
+      (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
+
 (eval-after-load "evil"
   '(progn
      (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
@@ -18,20 +39,12 @@
      ;; Also in visual mode
      (define-key evil-visual-state-map "j" 'evil-next-visual-line)
      (define-key evil-visual-state-map "k" 'evil-previous-visual-line)))
-(setq mac-function-modifier 'meta)
-(setq mac-option-modifier nil)
-
-(setq treemacs-indentation 1)
-
-(setq evil-snipe-scope 'buffer)
 
 ;; Org
 (require 'org-habit)
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
-;; (add-hook 'org-mode-hook
-;;           (lambda () (local-key-set (kbd "C-M-return") 'org-insert-subheading)))
 (setq org-agenda-custom-commands
       '(("c" "Simple agenda view"
          ((tags-todo "-CANCELLED-hobby/!NEXT"
@@ -64,20 +77,7 @@
   :mode "\\.ts$"
   :config
   (add-hook 'typescript-mode-hook #'rainbow-delimiters-mode)
-
-  (set! :electric 'typescript-mode :chars '(?\} ?\)) :words '("||" "&&"))
-
-  ;; TODO tide-jump-back
-  ;; TODO (tide-jump-to-definition t)
-  ;; TODO convert into keybinds
-  ;; (set! :emr 'typescript-mode
-  ;;       '(tide-find-references             "find usages")
-  ;;       '(tide-rename-symbol               "rename symbol")
-  ;;       '(tide-jump-to-definition          "jump to definition")
-  ;;       '(tide-documentation-at-point      "current type documentation")
-  ;;       '(tide-restart-server              "restart tide server"))
-  )
-
+  (set! :electric 'typescript-mode :chars '(?\} ?\)) :words '("||" "&&")))
 
 (def-package! tide
   :after typescript-mode
@@ -98,6 +98,8 @@
 (setq prettier-js-command "prettier_d")
 (setq prettier-js-args '("--pkg-conf"))
 (add-hook! (typescript-mode web-mode) #'prettier-js-mode)
+
+;; Custom functions
 
 (defun org-find-file () (interactive)
   (helm-find-files-1 "~/Dropbox/org/"))
@@ -122,23 +124,6 @@
   "Put the current file name on the clipboard"
   (interactive)
   (kill-new (buffer-file-name)))
-
-;; Keybindings
-(map! :leader
-      (:desc "file" :prefix "f"
-        :desc "Find in files"                          :n "s" #'helm-do-ag-project-root
-        :desc "Rename current file"                    :n "n" #'rename-current-buffer-file)
-      (:desc "git" :prefix "g"
-        :desc "Branch popup"                           :n "b"  #'magit-branch-popup)
-      (:desc "open / org" :prefix "o"
-        :desc "Find org file"                          :n "." #'org-find-file
-        :desc "Save org buffers"                       :n "s" #'org-save-all-org-buffers
-        :desc "Open shell in project"                  :n "t" #'projectile-run-shell)
-      (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
-      (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
-
-(require 'helm-descbinds)
-(helm-descbinds-mode)
 
 ;; Keep region when undoing in region
 (defadvice undo-tree-undo (around keep-region activate)
