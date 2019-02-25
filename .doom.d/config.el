@@ -13,6 +13,9 @@
 (require 'helm-descbinds)
 (helm-descbinds-mode)
 
+(require 'keychain-environment)
+(keychain-refresh-environment)
+
 ;; Keybindings
 (map! :leader
       (:desc "file" :prefix "f"

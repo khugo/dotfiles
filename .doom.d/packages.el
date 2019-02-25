@@ -12,3 +12,4 @@
 (package! buffer-move)
 (package! forge)
 (package! helm-descbinds)
+(package! keychain-environment)

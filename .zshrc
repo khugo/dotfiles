@@ -88,14 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 if [[ "$USER" != "hugokiiski" ]]; then
-    # Start ssh-agent
-    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-        ssh-agent > ~/.ssh-agent-thing
-    fi
-    if [[ "$SSH_AGENT_PID" == "" ]]; then
-        eval "$(<~/.ssh-agent-thing)"
-    fi
-    # ssh-add ~/.ssh/id_rsa
+    keychain --eval --agents ssh id_rsa
     source /usr/share/nvm/init-nvm.sh
 fi
 
