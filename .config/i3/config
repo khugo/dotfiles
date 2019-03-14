@@ -171,6 +171,8 @@ bar {
 
 bindsym $mod+m move workspace to output left
 
+focus_follows_mouse no
+
 exec "xset r rate 300 30" # Keyboard repeat rate
 exec --no-startup-id compton --config ~/.config/compton.conf -b
 # exec "xrandr --output HDMI-1-1 --auto --right-of DVI-I-1 --rotate left"
@@ -182,3 +184,5 @@ exec "feh --bg-scale ~/wallpapers/rain.jpg"
 exec --no-startup-id "setxkbmap -layout fi -variant nodeadkeys -option caps:escape"
 
 bindsym $mod+Shift+x exec --no-startup-id "scrot -s"
+bindsym $mod+c exec "bash /home/khugo/.local/bin/lock"
+exec --no-startup-id "xautolock -time 5 -locker '/home/khugo/.local/bin/lock' &"

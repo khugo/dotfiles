@@ -88,7 +88,6 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 if [[ "$USER" != "hugokiiski" ]]; then
-    keychain --eval --agents ssh id_rsa
     source /usr/share/nvm/init-nvm.sh
 fi
 
