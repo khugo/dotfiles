@@ -79,21 +79,21 @@
 (def-package! typescript-mode
   :mode "\\.ts$"
   :config
-  (add-hook 'typescript-mode-hook #'rainbow-delimiters-mode)
-  (set! :electric 'typescript-mode :chars '(?\} ?\)) :words '("||" "&&")))
+  (add-hook 'typescript-mode-hook #'rainbow-delimiters-mode))
 
 (def-package! tide
   :after typescript-mode
   :config
-  (set! :company-backend 'typescript-mode '(company-tide))
   (defun +typescript|init-tide ()
     (when (or (eq major-mode 'typescript-mode)
               (and (eq major-mode 'web-mode)
                    buffer-file-name
                    (equal (file-name-extension buffer-file-name) "tsx")))
+      (setq flycheck-check-syntax-automatically '(save mode-enabled))
       (tide-setup)
       (flycheck-mode +1)
       (eldoc-mode +1)
+      (company-mode +1)
       (setq tide-project-root (doom-project-root))))
   (add-hook! (typescript-mode web-mode) #'+typescript|init-tide))
 
