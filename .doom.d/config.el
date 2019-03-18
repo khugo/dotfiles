@@ -48,16 +48,15 @@
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
+(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "PROGRESS(p)" "|" "DONE(d)")
+                         (sequence "[ ](T)" "|" "[X](D)")))
 (setq org-agenda-custom-commands
       '(("c" "Simple agenda view"
-         ((tags-todo "-CANCELLED-hobby/!NEXT"
+         ((tags-todo "-hobby/!PROGRESS"
+                ((org-agenda-overriding-header "In progress:")))
+          (tags-todo "-CANCELLED-hobby/!NEXT"
                 ((org-agenda-overriding-header "Next tasks:")))
-          (tags-todo "-HOLD-CANCELLED-hobby/!"
-                ((org-agenda-overriding-header "Projects:")
-                (org-agenda-skip-function 'bh/skip-non-projects)
-                ;; (org-tags-match-list-sublevels 'indented)
-                ))
-          (tags-todo "-REFILE-read-hobby/!-NEXT"
+          (tags-todo "-REFILE-read-hobby/!TODO"
                 ((org-agenda-overriding-header "Standalone tasks:")
                 (org-agenda-skip-function 'bh/skip-project-tasks)
                 (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)))
