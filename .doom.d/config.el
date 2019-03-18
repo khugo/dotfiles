@@ -101,6 +101,8 @@
 (setq prettier-js-args '("--pkg-conf"))
 (add-hook! (typescript-mode web-mode) #'prettier-js-mode)
 
+(add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
+
 ;; Custom functions
 
 (defun org-find-file () (interactive)
