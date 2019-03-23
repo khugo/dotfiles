@@ -99,7 +99,7 @@
 ;; Use prettier_d for faster formatting
 (setq prettier-js-command "prettier_d")
 (setq prettier-js-args '("--pkg-conf"))
-(add-hook! (typescript-mode web-mode) #'prettier-js-mode)
+(add-hook! (typescript-mode) #'prettier-js-mode)
 
 (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
 
