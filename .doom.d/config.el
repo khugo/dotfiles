@@ -1,5 +1,6 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 (load-file "~/.doom.d/bh.el")
+(load-file "~/.doom.d/org-exports/flowdock.el")
 
 (setq display-line-numbers-type 'relative)
 (setq tab-width 2)
@@ -78,6 +79,8 @@
       ("n" "Next" entry (file org-default-notes-file)
        "* NEXT %?\n%u\n", :clock-in t :clock-resume t)))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
+
+(setq org-md-headline-style 'setext)
 
 ;; TypeScript
 (def-package! typescript-mode
