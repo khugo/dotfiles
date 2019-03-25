@@ -4,8 +4,8 @@
 (setq display-line-numbers-type 'relative)
 (setq tab-width 2)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq mac-function-modifier 'meta)
-(setq mac-option-modifier nil)
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
 
 (setq treemacs-indentation 1)
 (setq evil-snipe-scope 'buffer)
