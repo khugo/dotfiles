@@ -26,7 +26,8 @@
       (:desc "open / org" :prefix "o"
         :desc "Find org file"                          :n "." #'org-find-file
         :desc "Save org buffers"                       :n "s" #'org-save-all-org-buffers
-        :desc "Open shell in project"                  :n "t" #'projectile-run-shell)
+        :desc "Open shell in project"                  :n "t" #'projectile-run-shell
+        :desc "Agenda"                                 :n "a" #'org-agenda)
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
