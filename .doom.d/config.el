@@ -1,6 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 (load-file "~/.doom.d/bh.el")
 (load-file "~/.doom.d/org-exports/flowdock.el")
+(load-file "~/.doom.d/org-exports/lever.el")
 
 (setq display-line-numbers-type 'relative)
 (setq tab-width 2)
