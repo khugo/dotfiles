@@ -142,7 +142,7 @@
 
 ;; TypeScript
 (def-package! typescript-mode
-  :mode "\\.ts$"
+  :mode "\\.tsx?$"
   :config
   (add-hook 'typescript-mode-hook #'rainbow-delimiters-mode))
 
@@ -158,7 +158,7 @@
       (tide-setup)
       (flycheck-mode +1)
       (eldoc-mode +1)
-      (company-mode +1)
+      (setq company-backend '(company-tide))
       (setq tide-project-root (doom-project-root))))
   (add-hook! (typescript-mode web-mode) #'+typescript|init-tide))
 
