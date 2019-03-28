@@ -75,11 +75,67 @@
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
+(setq org-clock-out-remove-zero-time-clocks t)
+
+;; Common settings for all reviews
+(setq efs/org-agenda-review-settings
+      '((org-agenda-show-all-dates t)
+        (org-agenda-start-with-log-mode t)
+        (org-agenda-start-with-clockreport-mode t)
+        (org-agenda-archives-mode t)
+        ;; I don't care if an entry was archived
+        (org-agenda-hide-tags-regexp
+         (concat org-agenda-hide-tags-regexp
+                 "\\|ARCHIVE"))
+      ))
+
+(add-to-list 'org-agenda-custom-commands
+             '("R" . "Review" )
+             )
+
+(add-to-list 'org-agenda-custom-commands
+             `("Rd" "Day in review"
+                agenda ""
+                ;; agenda settings
+                ,(append
+                  efs/org-agenda-review-settings
+                  '((org-agenda-span 'day)
+                    (org-agenda-overriding-header "Day in Review"))
+                  )
+                ))
+
+(add-to-list 'org-agenda-custom-commands
+             `("Rw" "Week in review"
+                agenda ""
+                ;; agenda settings
+                ,(append
+                  efs/org-agenda-review-settings
+                  '((org-agenda-span 'week)
+                    (org-agenda-start-on-weekday 1)
+                    (org-agenda-overriding-header "Week in Review"))
+                  )
+                ))
+
+(add-to-list 'org-agenda-custom-commands
+             `("Rm" "Month in review"
+                agenda ""
+                ;; agenda settings
+                ,(append
+                  efs/org-agenda-review-settings
+                  '((org-agenda-span 'month)
+                    (org-agenda-start-day "01")
+                    (org-read-date-prefer-future nil)
+                    (org-agenda-overriding-header "Month in Review"))
+                  )
+                ))
+
 (setq org-capture-templates
     '(("t" "Todo" entry (file org-default-notes-file)
     "* TODO %?\n%u\n" :clock-in t :clock-resume t)
       ("n" "Next" entry (file org-default-notes-file)
-       "* NEXT %?\n%u\n", :clock-in t :clock-resume t)))
+       "* NEXT %?\n%u\n", :clock-in t :clock-resume t)
+      ("p" "Progress" entry (file org-default-notes-file)
+       "* PROGRESS %?\n%u\n", :clock-int t)))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 (setq org-md-headline-style 'setext)
