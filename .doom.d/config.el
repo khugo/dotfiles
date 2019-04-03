@@ -82,6 +82,7 @@
       '((org-agenda-show-all-dates t)
         (org-agenda-start-with-log-mode t)
         (org-agenda-start-with-clockreport-mode t)
+        (org-agenda-clockreport-parameter-plist (quote (:maxlevel 2 :fileskip0 t)))
         (org-agenda-archives-mode t)
         ;; I don't care if an entry was archived
         (org-agenda-hide-tags-regexp
@@ -131,11 +132,11 @@
 
 (setq org-capture-templates
     '(("t" "Todo" entry (file org-default-notes-file)
-    "* TODO %?\n%u\n" :clock-in t :clock-resume t)
+    "* TODO %?\n%u\n")
       ("n" "Next" entry (file org-default-notes-file)
-       "* NEXT %?\n%u\n", :clock-in t :clock-resume t)
+       "* NEXT %?\n%u\n")
       ("p" "Progress" entry (file org-default-notes-file)
-       "* PROGRESS %?\n%u\n", :clock-int t)))
+       "* PROGRESS %?\n%u\n")))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 (setq org-md-headline-style 'setext)
