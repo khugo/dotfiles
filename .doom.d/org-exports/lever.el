@@ -20,7 +20,7 @@
 (defun org-lever-format-title (title level)
   (cond ((= level 1) (concat "\n" title "\n" (make-string (length title) ?=)))
          ((= level 2) (concat "\n" title "\n" (make-string (length title) ?=) "\n"))
-         ((>= level 3) (concat (make-string (* (max (- level 3) 0) 2) ? ) "* " title))))
+         ((>= level 3) (concat (make-string (* (max (- level 3) 0) 4) ? ) "* " title))))
 
 (defun org-lever-export-as-lever ()
   (interactive)
