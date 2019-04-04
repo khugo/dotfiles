@@ -29,7 +29,10 @@
         :desc "Find org file"                          :n "." #'org-find-file
         :desc "Save org buffers"                       :n "s" #'org-save-all-org-buffers
         :desc "Open shell in project"                  :n "t" #'projectile-run-shell
-        :desc "Agenda"                                 :n "a" #'org-agenda)
+        :desc "Agenda"                                 :n "a" #'org-agenda
+        (:desc "Clocking" :prefix "c"
+          :desc "Clock in"                             :n "i" #'org-clock-in
+          :desc "Clock out"                            :n "o" #'org-clock-out))
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
@@ -75,7 +78,6 @@
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
-(setq org-clock-out-remove-zero-time-clocks t)
 
 ;; Common settings for all reviews
 (setq efs/org-agenda-review-settings
@@ -140,6 +142,11 @@
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 (setq org-md-headline-style 'setext)
+
+(require 'org-gcal)
+(setq org-gcal-client-id "260548128648-be5ibnlk5oapbocmdnk964u7hjfl3o48.apps.googleusercontent.com"
+      org-gcal-client-secret "8JQIyar19XaEWMSKsCa8Qzs8"
+      org-gcal-file-alist '(("hugo@smartly.io" .  "~/Dropbox/org/schedule.org")))
 
 ;; TypeScript
 (def-package! typescript-mode
