@@ -137,8 +137,8 @@
     "* TODO %?\n%u\n")
       ("n" "Next" entry (file org-default-notes-file)
        "* NEXT %?\n%u\n")
-      ("p" "Progress" entry (file org-default-notes-file)
-       "* PROGRESS %?\n%u\n")))
+      ("p" "Progress (clocks in)" entry (file org-default-notes-file)
+       "* PROGRESS %?\n%u\n" :clock-in t :clock-keep t)))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 (setq org-md-headline-style 'setext)
