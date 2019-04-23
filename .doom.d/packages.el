@@ -14,3 +14,4 @@
 (package! helm-descbinds)
 (package! keychain-environment)
 (package! restclient)
+(package! org-gcal)

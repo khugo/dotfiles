@@ -143,9 +143,15 @@
 
 (setq org-md-headline-style 'setext)
 
+(defun read-lines (filePath)
+  "Return a list of lines of a file at filePath."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (split-string (buffer-string) "\n" t)))
+
 (require 'org-gcal)
-(setq org-gcal-client-id "260548128648-be5ibnlk5oapbocmdnk964u7hjfl3o48.apps.googleusercontent.com"
-      org-gcal-client-secret "8JQIyar19XaEWMSKsCa8Qzs8"
+(setq org-gcal-client-id (car (read-lines "~/Dropbox/emacs/gcal_client_id"))
+      org-gcal-client-secret (car (read-lines "~/Dropbox/emacs/gcal_client_secret"))
       org-gcal-file-alist '(("hugo@smartly.io" .  "~/Dropbox/org/schedule.org")))
 
 ;; TypeScript
