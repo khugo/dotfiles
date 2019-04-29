@@ -178,32 +178,10 @@ with a clock from [now - task duration]--[now]."
       org-gcal-client-secret (car (read-lines "~/Dropbox/emacs/gcal_client_secret"))
       org-gcal-file-alist '(("hugo@smartly.io" .  "~/Dropbox/org/schedule.org")))
 
-;; TypeScript
-(def-package! typescript-mode
-  :mode "\\.tsx?$"
-  :config
-  (add-hook 'typescript-mode-hook #'rainbow-delimiters-mode))
-
-(def-package! tide
-  :after typescript-mode
-  :config
-  (defun +typescript|init-tide ()
-    (when (or (eq major-mode 'typescript-mode)
-              (and (eq major-mode 'web-mode)
-                   buffer-file-name
-                   (equal (file-name-extension buffer-file-name) "tsx")))
-      (setq flycheck-check-syntax-automatically '(save mode-enabled))
-      (tide-setup)
-      (flycheck-mode +1)
-      (eldoc-mode +1)
-      (setq company-backend '(company-tide))
-      (setq tide-project-root (doom-project-root))))
-  (add-hook! (typescript-mode web-mode) #'+typescript|init-tide))
-
 ;; Use prettier_d for faster formatting
 (setq prettier-js-command "prettier_d")
 (setq prettier-js-args '("--pkg-conf"))
-(add-hook! (typescript-mode) #'prettier-js-mode)
+(add-hook! (web-mode) #'prettier-js-mode)
 
 (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
 
