@@ -32,6 +32,7 @@
         :desc "Agenda"                                 :n "a" #'org-agenda
         (:desc "Clocking" :prefix "c"
           :desc "Clock in"                             :n "i" #'org-clock-in
+          :desc "Clock in last"                        :n "l" #'org-clock-in-last
           :desc "Clock out"                            :n "o" #'org-clock-out))
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
@@ -132,13 +133,36 @@
                   )
                 ))
 
+(defun hugo/org-format-time (time)
+  "Formats elisp time to org-mode's format"
+  (format-time-string "[%Y-%m-%d %a %H:%M]" time))
+
+(defun hugo/minutes-to-org-duration (minutes)
+  "Formats amount of minutes to org-mode's format of %HH:%MM"
+  (let* ((hours (floor (/ minutes 60)))
+         (minutes-left (- minutes (* hours 60))))
+    (format "%02d:%02d" hours minutes-left)))
+
+(defun hugo/capture-template-done-task ()
+  "Capture template function for capturing done tasks that I want to clock retroactively.
+It will ask for how long the task took to do, after which a DONE task is created
+with a clock from [now - task duration]--[now]."
+  (let* ((minutes (read-number "How many minutes ago did you start the task? "))
+        (current-seconds (float-time))
+        (start-time (seconds-to-time (- current-seconds (* minutes 60))))
+        (duration-string (hugo/minutes-to-org-duration minutes))
+        (start-string (hugo/org-format-time start-time))
+        (end-string (hugo/org-format-time (current-time)))
+        (logbook (format ":LOGBOOK:\nCLOCK: %s--%s =>  %s\n:END:" start-string end-string duration-string)))
+        (concat "* DONE %?\n%u\n" logbook)))
+
 (setq org-capture-templates
     '(("t" "Todo" entry (file org-default-notes-file)
     "* TODO %?\n%u\n")
-      ("n" "Next" entry (file org-default-notes-file)
-       "* NEXT %?\n%u\n")
       ("p" "Progress (clocks in)" entry (file org-default-notes-file)
-       "* PROGRESS %?\n%u\n" :clock-in t :clock-keep t)))
+       "* PROGRESS %?\n%u\n" :clock-in t :clock-keep t)
+      ("d" "Done" entry (file org-default-notes-file)
+       (function hugo/capture-template-done-task))))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 (setq org-md-headline-style 'setext)
