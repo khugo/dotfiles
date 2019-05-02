@@ -137,10 +137,6 @@
   "Formats elisp time to org-mode's format"
   (format-time-string "[%Y-%m-%d %a %H:%M]" time))
 
-(defun hugo/org-format-date-inactive (time)
-  "Formats elisp time to org-mode's inactive date"
-  (format-time-string "<%Y-%m-%d %a>" time))
-
 (defun hugo/minutes-to-org-duration (minutes)
   "Formats amount of minutes to org-mode's format of %HH:%MM"
   (let* ((hours (floor (/ minutes 60)))
@@ -155,17 +151,16 @@ with a clock from [now - task duration]--[now]."
         (current-seconds (float-time))
         (start-time (seconds-to-time (- current-seconds (* minutes 60))))
         (duration-string (hugo/minutes-to-org-duration minutes))
-        (today-string (hugo/org-format-date-inactive (current-time)))
         (start-string (hugo/org-format-time start-time))
         (end-string (hugo/org-format-time (current-time)))
-        (logbook (format "SCHEDULED: %s\n:LOGBOOK:\nCLOCK: %s--%s =>  %s\n:END:" today-string start-string end-string duration-string)))
-        (concat "* DONE %?\n%u\n" logbook)))
+        (logbook (format ":LOGBOOK:\nCLOCK: %s--%s =>  %s\n:END:" start-string end-string duration-string)))
+        (concat "* DONE %?\nSCHEDULED: %t\n" logbook)))
 
 (setq org-capture-templates
     '(("t" "Todo" entry (file org-default-notes-file)
-    "* TODO %?\n%u\n")
+    "* TODO %?\nSCHEDULED: %t")
       ("p" "Progress (clocks in)" entry (file org-default-notes-file)
-       "* PROGRESS %?\n%u\n" :clock-in t :clock-keep t)
+       "* PROGRESS %?\nSCHEDULED: %t" :clock-in t :clock-keep t)
       ("d" "Done" entry (file org-default-notes-file)
        (function hugo/capture-template-done-task))))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
