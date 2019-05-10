@@ -59,7 +59,7 @@
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
-(setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "PROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")
+(setq org-todo-keywords '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
                          (sequence "[ ](T)" "|" "[X](D)")))
 
 (setq org-agenda-custom-commands
@@ -154,13 +154,13 @@ with a clock from [now - task duration]--[now]."
         (start-string (hugo/org-format-time start-time))
         (end-string (hugo/org-format-time (current-time)))
         (logbook (format ":LOGBOOK:\nCLOCK: %s--%s =>  %s\n:END:" start-string end-string duration-string)))
-        (concat "* DONE %?\nSCHEDULED: %t\n" logbook)))
+        (concat "* DONE %?\nSCHEDULED: %t\n" logbook "\n" (hugo/make-id-property))))
 
 (setq org-capture-templates
     '(("t" "Todo" entry (file org-default-notes-file)
     "* TODO %?\nSCHEDULED: %t")
-      ("p" "Progress (clocks in)" entry (file org-default-notes-file)
-       "* PROGRESS %?\nSCHEDULED: %t" :clock-in t :clock-keep t)
+      ("p" "Start new task (clocks in)" entry (file org-default-notes-file)
+       "* TODO %?\nSCHEDULED: %t" :clock-in t :clock-keep t)
       ("d" "Done" entry (file org-default-notes-file)
        (function hugo/capture-template-done-task))))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
