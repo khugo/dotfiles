@@ -33,7 +33,8 @@
         (:desc "Clocking" :prefix "c"
           :desc "Clock in"                             :n "i" #'org-clock-in
           :desc "Clock in last"                        :n "l" #'org-clock-in-last
-          :desc "Clock out"                            :n "o" #'org-clock-out))
+          :desc "Clock out"                            :n "o" #'org-clock-out
+          :desc "Mark task done"                       :n "d" #'hugo/org-mark-current-task-done))
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
@@ -164,6 +165,13 @@ with a clock from [now - task duration]--[now]."
       ("d" "Done" entry (file org-default-notes-file)
        (function hugo/capture-template-done-task))))
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
+
+(defun hugo/org-mark-current-task-done () (interactive)
+    (with-current-buffer (marker-buffer org-clock-marker)
+        (save-excursion
+            (goto-char org-clock-marker)
+            (org-todo 'done)
+            (save-buffer))))
 
 (setq org-md-headline-style 'setext)
 
