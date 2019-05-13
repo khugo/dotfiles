@@ -191,7 +191,7 @@ with a clock from [now - task duration]--[now]."
 ;; Use prettier_d for faster formatting
 (setq prettier-js-command "prettier_d")
 (setq prettier-js-args '("--pkg-conf"))
-(add-hook! (web-mode) #'prettier-js-mode)
+(add-hook! (js2-mode typescript-mode) #'prettier-js-mode)
 
 (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
 
