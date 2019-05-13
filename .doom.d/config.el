@@ -174,6 +174,8 @@ with a clock from [now - task duration]--[now]."
             (save-buffer))))
 
 (setq org-md-headline-style 'setext)
+(advice-add 'org-clock-in :after (lambda (&rest r) (org-save-all-org-buffers)))
+(advice-add 'org-clock-out :after (lambda (&rest r) (org-save-all-org-buffers)))
 
 (defun read-lines (filePath)
   "Return a list of lines of a file at filePath."
