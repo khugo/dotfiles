@@ -20,8 +20,8 @@
     (concat (org-flowdock-format-title title level) "\n" contents)))
 
 (defun org-flowdock-format-title (title level)
-  (cond ((= level 1) (concat "\n" title "\n" (make-string (length title) ?=)))
-         ((= level 2) (concat "\n" title "\n" (make-string (length title) ?-)))
+  (cond ((= level 1) (concat "\n" title "\n" (make-string 5 ?=)))
+         ((= level 2) (concat "\n" title "\n" (make-string 5 ?-)))
          ((>= level 3) (concat (make-string (* (max (- level 3) 0) 2) ? ) "- " title))))
 
 ;;;; Paragraph
