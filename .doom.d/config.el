@@ -155,7 +155,7 @@ with a clock from [now - task duration]--[now]."
         (start-string (hugo/org-format-time start-time))
         (end-string (hugo/org-format-time (current-time)))
         (logbook (format ":LOGBOOK:\nCLOCK: %s--%s =>  %s\n:END:" start-string end-string duration-string)))
-        (concat "* DONE %?\nSCHEDULED: %t\n" logbook "\n" (hugo/make-id-property))))
+        (concat "* DONE %?\nSCHEDULED: %t\n" logbook "\n")))
 
 (setq org-capture-templates
     '(("t" "Todo" entry (file org-default-notes-file)
