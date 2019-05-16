@@ -164,6 +164,10 @@ with a clock from [now - task duration]--[now]."
        "* TODO %?\nSCHEDULED: %t" :clock-in t :clock-keep t)
       ("d" "Done" entry (file org-default-notes-file)
        (function hugo/capture-template-done-task))))
+
+(setq org-refile-targets
+    '((org-agenda-files :tag . "refiletarget")))
+
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
 (defun hugo/org-mark-current-task-done () (interactive)
