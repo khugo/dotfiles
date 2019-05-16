@@ -167,6 +167,7 @@ with a clock from [now - task duration]--[now]."
 
 (setq org-refile-targets
     '((org-agenda-files :tag . "refiletarget")))
+(setq org-agenda-hide-tags-regexp "refiletarget")
 
 (add-hook! org-agenda-mode #'toggle-truncate-lines)
 
