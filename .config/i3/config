@@ -85,8 +85,8 @@ bindsym $mod+a focus parent
 set $ws1 1 editor
 set $ws2 2 work
 set $ws3 3 chat
-set $ws4 4 personal
-set $ws5 5 pass
+set $ws4 4 pass
+set $ws5 5 personal
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
