@@ -33,20 +33,19 @@
 ;;;; Plain text
 
 (defun org-flowdock-plain-text (text info)
-  text
-  )
+  text)
 
 ;;;; Section
 
 (defun org-flowdock-section (section contents info)
-  contents
-  )
+  contents)
 
 ;;;; Link
 
 (defun org-flowdock-link (link desc info)
-   (org-element-property :raw-link link)
-  )
+  (if desc
+    (format "[%s](%s)" desc (org-element-property :raw-link link))
+    (org-element-property :raw-link link)))
 
 (defun org-flowdock-export-as-flowdock ()
   (interactive)
