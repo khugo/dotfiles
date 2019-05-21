@@ -27,8 +27,8 @@
 ;;;; Paragraph
 
 (defun org-flowdock-paragraph (paragraph contents info)
-  contents
-  )
+  ;; Unwrap lines as flowdock treats every linebreak as a new visual line
+  (subst-char-in-string ?\n ? contents))
 
 ;;;; Plain text
 
