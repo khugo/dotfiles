@@ -84,9 +84,8 @@
 ;; Common settings for all reviews
 (setq efs/org-agenda-review-settings
       '((org-agenda-show-all-dates t)
-        (org-agenda-start-with-log-mode t)
         (org-agenda-start-with-clockreport-mode t)
-        (org-agenda-clockreport-parameter-plist (quote (:maxlevel 2 :fileskip0 t)))
+        (org-agenda-clockreport-parameter-plist (quote (:maxlevel 5 :fileskip0 t :formula %)))
         (org-agenda-archives-mode t)
         ;; I don't care if an entry was archived
         (org-agenda-hide-tags-regexp
@@ -105,6 +104,7 @@
                 ,(append
                   efs/org-agenda-review-settings
                   '((org-agenda-span 'day)
+                    (org-agenda-start-day "+0d")
                     (org-agenda-overriding-header "Day in Review"))
                   )
                 ))
