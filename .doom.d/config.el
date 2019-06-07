@@ -63,20 +63,6 @@
 (setq org-todo-keywords '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
                          (sequence "[ ](T)" "|" "[X](D)")))
 
-(setq org-agenda-custom-commands
-      '(("c" "Simple agenda view"
-         ((tags-todo "-hobby/!PROGRESS"
-                ((org-agenda-overriding-header "In progress:")))
-          (tags-todo "-CANCELLED-hobby/!NEXT"
-                ((org-agenda-overriding-header "Next tasks:")))
-          (tags-todo "-REFILE-read-hobby/!TODO"
-                ((org-agenda-overriding-header "Standalone tasks:")
-                (org-agenda-skip-function 'bh/skip-project-tasks)
-                (org-agenda-todo-ignore-scheduled bh/hide-scheduled-and-waiting-next-tasks)))
-          (tags-todo "+read"
-                ((org-agenda-overriding-header "Reading list:")))
-          (tags-todo "+hobby"
-                ((org-agenda-overriding-header "Hobby tasks:")))))))
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
