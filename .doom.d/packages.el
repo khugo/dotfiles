@@ -15,3 +15,4 @@
 (package! keychain-environment)
 (package! restclient)
 (package! org-gcal)
+(package! org-journal)

@@ -30,6 +30,7 @@
         :desc "Save org buffers"                       :n "s" #'org-save-all-org-buffers
         :desc "Open shell in project"                  :n "t" #'projectile-run-shell
         :desc "Agenda"                                 :n "a" #'org-agenda
+        :desc "New journal entry"                      :n "j" #'org-journal-new-entry
         (:desc "Clocking" :prefix "c"
           :desc "Clock in"                             :n "i" #'org-clock-in
           :desc "Clock in last"                        :n "l" #'org-clock-in-last
@@ -178,6 +179,18 @@ with a clock from [now - task duration]--[now]."
 (setq org-gcal-client-id (car (read-lines "~/Dropbox/emacs/gcal_client_id"))
       org-gcal-client-secret (car (read-lines "~/Dropbox/emacs/gcal_client_secret"))
       org-gcal-file-alist '(("hugo@smartly.io" .  "~/Dropbox/org/schedule.org")))
+
+;; org-journal
+(setq org-journal-dir "~/Dropbox/org/journal")
+(setq org-journal-file-type 'monthly)
+(defun org-journal-save-entry-and-exit()
+    "Simple convenience function.
+  Saves the buffer of the current day's entry and kills the window
+  Similar to org-capture like behavior"
+    (interactive)
+    (save-buffer)
+    (kill-buffer-and-window))
+(define-key org-journal-mode-map (kbd "C-x C-s") 'org-journal-save-entry-and-exit)
 
 ;; Use prettier_d for faster formatting
 (setq prettier-js-command "prettier_d")
