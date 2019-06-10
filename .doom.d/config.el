@@ -189,6 +189,7 @@ with a clock from [now - task duration]--[now]."
       org-gcal-file-alist '(("hugo@smartly.io" .  "~/Dropbox/org/schedule.org")))
 
 ;; org-journal
+(require 'org-journal)
 (setq org-journal-dir "~/Dropbox/org/journal")
 (setq org-journal-file-type 'monthly)
 (defun org-journal-save-entry-and-exit()
