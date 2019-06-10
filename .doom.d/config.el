@@ -68,6 +68,14 @@
 (setq org-agenda-start-on-weekday nil)
 (setq org-agenda-span 5)
 
+(defun org-archive-done-tasks ()
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (outline-previous-heading)))
+   "/DONE|CANCELLED" 'tree))
+
 ;; Common settings for all reviews
 (setq efs/org-agenda-review-settings
       '((org-agenda-show-all-dates t)
