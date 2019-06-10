@@ -59,6 +59,7 @@
 ;; Org
 (require 'org-habit)
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
+(setq org-agenda-tag-filter-preset '("-HOME"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
 (setq org-todo-keywords '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
