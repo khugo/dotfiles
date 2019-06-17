@@ -34,7 +34,8 @@
   ;; Unwrap lines as flowdock treats every linebreak as a new visual line
   ;; Visual line breaks can still be created by inserting two line breaks
   ;; as that creates another paragraph element
-  (subst-char-in-string ?\n ? contents))
+  ;;; (subst-char-in-string ?\n ? contents)
+  contents)
 
 ;;;; Plain text
 
