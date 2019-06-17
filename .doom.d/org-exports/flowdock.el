@@ -6,7 +6,10 @@
     (plain-text . org-flowdock-plain-text)
     (section . org-flowdock-section)
     (link . org-flowdock-link)
-    (code . org-flowdock-code))
+    (code . org-flowdock-code)
+    (plain-list . org-flowdock-plain-list)
+    (item . org-flowdock-item)
+    (bold . org-md-bold))
   :menu-entry
   '(?f "Export to Flowdock"
        ((?f "To temporary buffer"
@@ -49,6 +52,19 @@
   (if desc
     (format "[%s](%s)" desc (org-element-property :raw-link link))
     (org-element-property :raw-link link)))
+
+;;;; List
+
+(defun org-flowdock-plain-list (_plain-list contents _info)
+  contents)
+
+;;;; Item
+
+(defun org-flowdock-item (item contents info)
+  (let* ((type (org-element-property :type (org-export-get-parent item)))
+	 (struct (org-element-property :structure item))
+	 (bullet (org-element-property :bullet item)))
+    (concat bullet " " contents " ")))
 
 ;;;; Code
 
