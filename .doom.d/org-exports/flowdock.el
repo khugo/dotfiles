@@ -5,7 +5,8 @@
     (paragraph . org-flowdock-paragraph)
     (plain-text . org-flowdock-plain-text)
     (section . org-flowdock-section)
-    (link . org-flowdock-link))
+    (link . org-flowdock-link)
+    (code . org-flowdock-code))
   :menu-entry
   '(?f "Export to Flowdock"
        ((?f "To temporary buffer"
@@ -48,6 +49,11 @@
   (if desc
     (format "[%s](%s)" desc (org-element-property :raw-link link))
     (org-element-property :raw-link link)))
+
+;;;; Code
+
+(defun org-flowdock-code (code _contents _info)
+  (format "`%s`" (org-element-property :value code)))
 
 (defun org-flowdock-export-as-flowdock ()
   (interactive)
