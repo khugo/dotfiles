@@ -6,7 +6,6 @@
 (setq display-line-numbers-type 'relative)
 (setq tab-width 2)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq mac-option-modifier 'super)
 (setq mac-command-modifier 'meta)
 
 (setq treemacs-indentation 1)
