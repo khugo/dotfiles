@@ -193,6 +193,8 @@ with a clock from [now - task duration]--[now]."
 (require 'org-journal)
 (setq org-journal-dir "~/Dropbox/org/journal")
 (setq org-journal-file-type 'monthly)
+(add-to-list 'auto-mode-alist '("journal/\\(?1:[0-9]\\{4\\}\\)\\(?2:[0-9][0-9]\\)\\(?3:[0-9][0-9]\\)\\(\\.gpg\\)?\\'" . org-journal-mode))
+(setq org-journal-date-format "%A, %d %B %Y")
 (defun org-journal-save-entry-and-exit()
     "Simple convenience function.
   Saves the buffer of the current day's entry and kills the window
