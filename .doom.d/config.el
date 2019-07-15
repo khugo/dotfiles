@@ -62,8 +62,9 @@
 (setq org-agenda-tag-filter-preset '("-HOME"))
 (setq org-log-done 'time)
 (setq org-agenda-files '("~/Dropbox/org/"))
-(setq org-todo-keywords '((sequence "TODO(t)" "|" "DONE(d)" "CANCELLED(c)")
+(setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")
                          (sequence "[ ](T)" "|" "[X](D)")))
+(setq org-todo-keyword-faces '(("WAITING" . "light grey")))
 
 (setq org-agenda-start-day "-1d")
 (setq org-agenda-start-on-weekday nil)
