@@ -18,6 +18,9 @@
 (require 'keychain-environment)
 (keychain-refresh-environment)
 
+;; Unmap leader o A to use it for my own things
+(define-key doom-leader-map (kbd "o A") nil)
+
 ;; Keybindings
 (map! :leader
       (:desc "file" :prefix "f"
@@ -35,7 +38,9 @@
           :desc "Clock in"                             :n "i" #'org-clock-in
           :desc "Clock in last"                        :n "l" #'org-clock-in-last
           :desc "Clock out"                            :n "o" #'org-clock-out
-          :desc "Mark task done"                       :n "d" #'hugo/org-mark-current-task-done))
+          :desc "Mark task done"                       :n "d" #'hugo/org-mark-current-task-done)
+        (:desc "Archiving" :prefix "A"
+          :desc "Archive done tasks"                   :n "d" #'org-archive-done-tasks))
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
