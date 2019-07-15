@@ -80,7 +80,8 @@
   (org-map-entries
    (lambda ()
      (org-archive-subtree)
-     (setq org-map-continue-from (outline-previous-heading)))
+     (setq org-map-continue-from (outline-previous-heading))
+     (org-save-all-org-buffers))
    "/DONE|CANCELLED" 'tree))
 
 ;; Common settings for all reviews
