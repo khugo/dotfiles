@@ -158,4 +158,4 @@ fpath=(~/notes/.bin $fpath)
 
 export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
-keychain --eval --agents ssh id_rsa
+eval "$(keychain --eval --agents ssh id_rsa)"
