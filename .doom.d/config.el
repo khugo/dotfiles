@@ -5,6 +5,7 @@
 
 (setq display-line-numbers-type 'relative)
 (setq tab-width 2)
+(setq truncate-lines t)
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
@@ -20,6 +21,8 @@
 
 ;; Unmap leader o A to use it for my own things
 (define-key doom-leader-map (kbd "o A") nil)
+(define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
+(define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 
 ;; Keybindings
 (map! :leader
@@ -82,7 +85,7 @@
      (org-archive-subtree)
      (setq org-map-continue-from (outline-previous-heading))
      (org-save-all-org-buffers))
-   "/DONE|CANCELLED" 'tree))
+   "/DONE|CANCELLED" nil))
 
 ;; Common settings for all reviews
 (setq efs/org-agenda-review-settings
