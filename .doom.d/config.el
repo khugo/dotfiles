@@ -10,6 +10,10 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+;; Always revert files to what they are on disk to avoid having emacs ask for it
+;; when changing files via git
+(global-auto-revert-mode)
+
 (setq treemacs-indentation 1)
 (setq evil-snipe-scope 'buffer)
 
@@ -21,8 +25,10 @@
 
 ;; Unmap leader o A to use it for my own things
 (define-key doom-leader-map (kbd "o A") nil)
+(require 'ivy)
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
+(define-key ivy-minibuffer-map (kbd "ESC") 'minibuffer-keyboard-quit)
 
 ;; Keybindings
 (map! :leader
@@ -46,6 +52,8 @@
           :desc "Archive done tasks"                   :n "d" #'org-archive-done-tasks))
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
+
+(define-key global-map (kbd "C-7") 'swiper)
 
 (eval-after-load "evil"
   '(progn
@@ -85,7 +93,7 @@
      (org-archive-subtree)
      (setq org-map-continue-from (outline-previous-heading))
      (org-save-all-org-buffers))
-   "/DONE|CANCELLED" nil))
+   "/DONE|CANCELLED" 'file))
 
 ;; Common settings for all reviews
 (setq efs/org-agenda-review-settings

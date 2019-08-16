@@ -159,3 +159,6 @@ fpath=(~/notes/.bin $fpath)
 export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
 eval "$(keychain --eval --agents ssh id_rsa)"
+if test -f "/usr/share/fzf/key-bindings.zsh"; then
+  source "/usr/share/fzf/key-bindings.zsh"
+fi
