@@ -10,6 +10,8 @@
 (setq mac-command-modifier 'meta)
 (setq mac-option-modifier nil)
 
+(add-to-list 'exec-path "/usr/local/bin/")
+
 ;; Always revert files to what they are on disk to avoid having emacs ask for it
 ;; when changing files via git
 (global-auto-revert-mode)
