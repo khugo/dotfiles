@@ -162,3 +162,8 @@ eval "$(keychain --eval --agents ssh id_rsa)"
 if test -f "/usr/share/fzf/key-bindings.zsh"; then
   source "/usr/share/fzf/key-bindings.zsh"
 fi
+
+export CHROME_PATH="/usr/bin/google-chrome-stable"
+eval "$(fasd --init auto)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
