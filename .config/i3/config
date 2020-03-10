@@ -166,6 +166,6 @@ exec "feh --bg-scale ~/wallpapers/rain.jpg"
 exec --no-startup-id "setxkbmap -layout fi -variant nodeadkeys -option caps:escape"
 
 bindsym $mod+Shift+x exec --no-startup-id "scrot -s"
-bindsym $mod+c exec "/usr/bin/i3lock"
+bindsym $mod+c exec "/usr/bin/gllock"
 bindsym $mod+p exec "deepin-screenshot"
-exec --no-startup-id "xautolock -time 5 -locker '/usr/bin/i3lock' &"
+exec --no-startup-id "xautolock -time 5 -locker '/usr/bin/gllock' &"
