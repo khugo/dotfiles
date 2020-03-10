@@ -26,8 +26,7 @@
 (defun org-flowdock-format-title (title level)
   (cond ((= level 1) (concat "\n" title "\n" (make-string 5 ?=)))
          ((= level 2) (concat "\n" title "\n" (make-string 5 ?=)))
-         ((= level 3) (concat "\n" title "\n" (make-string 5 ?-)))
-         ((>= level 4) (concat (make-string (* (max (- level 4) 0) 2) ? ) "- " title))))
+         ((>= level 3) (concat (make-string (* (max (- level 3) 0) 2) ? ) "- " title))))
 
 ;;;; Paragraph
 
@@ -35,8 +34,7 @@
   ;; Unwrap lines as flowdock treats every linebreak as a new visual line
   ;; Visual line breaks can still be created by inserting two line breaks
   ;; as that creates another paragraph element
-  ;;; (subst-char-in-string ?\n ? contents)
-  contents)
+ (subst-char-in-string ?\n ? contents))
 
 ;;;; Plain text
 
