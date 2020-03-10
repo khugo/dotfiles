@@ -57,7 +57,7 @@
       (:desc "toggle" :prefix "t"                      :n "w" #'toggle-truncate-lines)
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
-(define-key global-map (kbd "C-7") 'swiper)
+(define-key global-map (kbd "C-7") 'swiper-helm)
 
 (eval-after-load "evil"
   '(progn
