@@ -289,3 +289,10 @@ with a clock from [now - task duration]--[now]."
           (set-buffer-modified-p nil)
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
+
+(defun khugo/browse-commit-pr ()
+  "Opens the corresponding PR of the commit being browsed in magit."
+  (interactive)
+  (let* ((response (ghub-get "/search/issues" `((q . ,magit-buffer-revision)) :auth 'forge))
+        (pr-url (cdr (assoc 'html_url (car (cdr (assoc 'items response)))))))
+    (browse-url pr-url)))
