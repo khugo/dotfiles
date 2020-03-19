@@ -37,7 +37,7 @@
 ;; Keybindings
 (map! :leader
       (:desc "file" :prefix "f"
-        :desc "Find in files"                          :n "s" #'helm-do-ag-project-root
+        :desc "Find in files"                          :n "s" #'+helm/project-search
         :desc "Rename current file"                    :n "n" #'rename-current-buffer-file)
       (:desc "git" :prefix "g"
         :desc "Branch popup"                           :n "b"  #'magit-branch-popup)
