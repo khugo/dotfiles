@@ -296,3 +296,10 @@ with a clock from [now - task duration]--[now]."
   (let* ((response (ghub-get "/search/issues" `((q . ,magit-buffer-revision)) :auth 'forge))
         (pr-url (cdr (assoc 'html_url (car (cdr (assoc 'items response)))))))
     (browse-url pr-url)))
+
+(defun khugo/browse-file-in-gh ()
+  "Opens the current buffer's file in GitHub."
+  (interactive)
+  (let* ((file-name (string-remove-prefix (doom-project-root) buffer-file-name))
+         (url (format "https://github.com/smartlyio/%s/blob/master/%s" (doom-project-name) file-name)))
+    (browse-url url)))
