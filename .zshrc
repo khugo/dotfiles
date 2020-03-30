@@ -153,6 +153,7 @@ alias k="kubectl $@"
 
 # Path additions
 PATH="$PATH:$HOME/notes/.bin"
+PATH="$PATH:/usr/local/bin"
 
 # Zsh completions
 fpath=(~/notes/.bin $fpath)
