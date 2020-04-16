@@ -301,5 +301,6 @@ with a clock from [now - task duration]--[now]."
   "Opens the current buffer's file in GitHub."
   (interactive)
   (let* ((file-name (string-remove-prefix (doom-project-root) buffer-file-name))
-         (url (format "https://github.com/smartlyio/%s/blob/master/%s" (doom-project-name) file-name)))
+         (line-number (line-number-at-pos))
+         (url (format "https://github.com/smartlyio/%s/blob/master/%s#L%d" (doom-project-name) file-name line-number)))
     (browse-url url)))
