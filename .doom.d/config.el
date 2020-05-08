@@ -224,6 +224,7 @@ with a clock from [now - task duration]--[now]."
 (add-hook! (js2-mode typescript-mode) #'prettier-js-mode)
 
 (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
 ;; Custom functions
 
