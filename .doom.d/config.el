@@ -294,7 +294,7 @@ with a clock from [now - task duration]--[now]."
 (defun khugo/browse-commit-pr ()
   "Opens the corresponding PR of the commit being browsed in magit."
   (interactive)
-  (let* ((response (ghub-get "/search/issues" `((q . ,magit-buffer-revision)) :auth 'forge))
+  (let* ((response (ghub-get "/search/issues" `((q . ,magit-buffer-revision-hash)) :auth 'forge))
         (pr-url (cdr (assoc 'html_url (car (cdr (assoc 'items response)))))))
     (browse-url pr-url)))
 
