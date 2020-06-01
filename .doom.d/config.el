@@ -81,7 +81,7 @@
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-agenda-tag-filter-preset '("-HOME"))
 (setq org-log-done 'time)
-(setq org-agenda-files '("~/Dropbox/org/"))
+(setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\.org$"))
 (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(p)" "|" "DONE(d)" "CANCELLED(c)")
                          (sequence "[ ](T)" "|" "[X](D)")))
 (setq org-todo-keyword-faces '(("INPROGRESS" . "light grey")))
