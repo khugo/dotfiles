@@ -11,6 +11,7 @@
 (setq mac-option-modifier nil)
 
 (add-to-list 'exec-path "/usr/local/bin/")
+(add-to-list 'exec-path "~/.nvm/versions/node/v12.16.3/bin/node")
 
 ;; Always revert files to what they are on disk to avoid having emacs ask for it
 ;; when changing files via git
