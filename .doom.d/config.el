@@ -34,6 +34,7 @@
 (define-key ivy-minibuffer-map (kbd "C-j") 'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-k") 'ivy-previous-line)
 (define-key ivy-minibuffer-map (kbd "ESC") 'minibuffer-keyboard-quit)
+(define-key treemacs-mode-map (kbd "C-l") 'evil-window-right)
 
 ;; Keybindings
 (map! :leader
