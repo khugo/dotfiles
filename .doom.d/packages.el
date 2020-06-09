@@ -16,3 +16,4 @@
 (package! restclient)
 (package! org-gcal)
 (package! org-journal)
+(package! yaml-mode)
