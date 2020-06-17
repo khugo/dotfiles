@@ -302,9 +302,10 @@ with a clock from [now - task duration]--[now]."
     (browse-url pr-url)))
 
 (defun khugo/browse-file-in-gh ()
-  "Opens the current buffer's file in GitHub."
+  "Opens the current buffer's file in GitHub. Supports selected regions."
   (interactive)
   (let* ((file-name (string-remove-prefix (doom-project-root) buffer-file-name))
-         (line-number (line-number-at-pos))
-         (url (format "https://github.com/smartlyio/%s/blob/master/%s#L%d" (doom-project-name) file-name line-number)))
+         (line-number-start (line-number-at-pos (region-beginning)))
+         (line-number-end (line-number-at-pos (region-end)))
+         (url (format "https://github.com/smartlyio/%s/blob/master/%s#L%d-L%d" (doom-project-name) file-name line-number-start line-number-end)))
     (browse-url url)))
