@@ -83,7 +83,7 @@
 (require 'org-habit)
 (setq org-default-notes-file (expand-file-name "~/Dropbox/org/refile.org"))
 (setq org-agenda-tag-filter-preset '("-HOME"))
-(setq org-log-done 'time)
+(setq org-log-done nil)
 (setq org-agenda-files (directory-files-recursively "~/Dropbox/org/" "\.org$"))
 (setq org-todo-keywords '((sequence "TODO(t)" "INPROGRESS(p)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)")
                          (sequence "[ ](T)" "|" "[X](D)")))
