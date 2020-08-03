@@ -20,3 +20,5 @@
 	default = current
 [github]
 	user = khugo
+[pull]
+	rebase = true
