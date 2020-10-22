@@ -26,7 +26,8 @@
 (require 'keychain-environment)
 (keychain-refresh-environment)
 
-(advice-add '+vc|enforce-git-commit-conventions :after (lambda (&rest r) (setq git-commit-style-convention-checks '(non-empty-second-line))))
+(setq git-commit-style-convention-checks '(non-empty-second-line))
+(setq magit-list-refs-sortby "-committerdate") ; Sort branches by last commit
 
 ;; Unmap leader o A to use it for my own things
 (define-key doom-leader-map (kbd "o A") nil)
