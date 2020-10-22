@@ -16,4 +16,5 @@
 (package! restclient)
 (package! org-gcal)
 (package! org-journal)
+(package! ox-slack)
 (package! yaml-mode)
