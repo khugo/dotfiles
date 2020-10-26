@@ -306,7 +306,7 @@ with a clock from [now - task duration]--[now]."
   "Opens the current buffer's file in GitHub. Supports selected regions."
   (interactive)
   (let* ((file-name (string-remove-prefix (doom-project-root) buffer-file-name))
-         (line-number-start (line-number-at-pos (region-beginning)))
-         (line-number-end (line-number-at-pos (region-end)))
+         (line-number-start (if (use-region-p) (line-number-at-pos (region-beginning)) 0))
+         (line-number-end (if (use-region-p) (line-number-at-pos (region-end)) 0))
          (url (format "https://github.com/smartlyio/%s/blob/master/%s#L%d-L%d" (doom-project-name) file-name line-number-start line-number-end)))
     (browse-url url)))
