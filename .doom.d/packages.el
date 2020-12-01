@@ -8,7 +8,7 @@
 
 (package! tide)
 (package! typescript-mode)
-(package! prettier-js)
+(package! eslintd-fix)
 (package! buffer-move)
 (package! forge)
 (package! helm-descbinds)

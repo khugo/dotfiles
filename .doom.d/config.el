@@ -222,10 +222,8 @@ with a clock from [now - task duration]--[now]."
 (add-to-list 'auto-mode-alist '("journal/\\(?1:[0-9]\\{4\\}\\)\\(?2:[0-9][0-9]\\)\\(?3:[0-9][0-9]\\)\\(\\.gpg\\)?\\'" . org-journal-mode))
 (setq org-journal-date-format "%A, %d %B %Y")
 
-;; Use prettier_d for faster formatting
-(setq prettier-js-command "prettier_d")
-(setq prettier-js-args '("--pkg-conf"))
-(add-hook! (js2-mode typescript-mode) #'prettier-js-mode)
+;; Use eslint_d for faster formatting
+(add-hook! (js2-mode typescript-mode) #'eslintd-fix-mode)
 
 (add-to-list 'auto-mode-alist '("\\.restclient\\'" . restclient-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
