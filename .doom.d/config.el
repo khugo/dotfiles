@@ -18,6 +18,7 @@
 (global-auto-revert-mode)
 
 (setq treemacs-indentation 1)
+(setq cwm-centered-window-width 150)
 (setq evil-snipe-scope 'buffer)
 
 (require 'helm-descbinds)
