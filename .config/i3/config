@@ -168,5 +168,5 @@ exec --no-startup-id "setxkbmap -layout fi -variant nodeadkeys -option caps:esca
 
 bindsym $mod+Shift+x exec --no-startup-id "scrot -s"
 bindsym $mod+c exec "/usr/bin/gllock"
-bindsym $mod+p exec "deepin-screen-recorder"
+bindsym $mod+p exec "deepin-screenshot"
 exec --no-startup-id "xautolock -time 5 -locker '/usr/bin/gllock' &"
