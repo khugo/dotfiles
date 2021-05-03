@@ -171,3 +171,6 @@ export CHROME_PATH="/usr/bin/google-chrome-stable"
 eval "$(fasd --init auto)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export DOCKER_BUILDKIT=1
+export BUILDKIT_INLINE_CACHE=1
+export COMPOSE_DOCKER_CLI_BUILD=1
