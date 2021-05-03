@@ -63,6 +63,7 @@
       (:prefix "w" :desc "toggle-window-split"         :n "t" #'toggle-window-split))
 
 (define-key global-map (kbd "C-7") 'swiper-helm)
+(define-key global-map (kbd "C-x s") nil)
 
 (eval-after-load "evil"
   '(progn
