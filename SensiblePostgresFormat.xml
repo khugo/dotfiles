@@ -1,0 +1,34 @@
+<code_scheme name="Sensible" version="173">
+  <PostgresCodeStyleSettings version="6">
+    <option name="USE_GENERAL_STYLE" value="false" />
+    <option name="KEYWORD_CASE" value="2" />
+    <option name="TYPE_CASE" value="1" />
+    <option name="QUERY_EL_COMMA" value="2" />
+    <option name="QUERY_IN_ONE_STRING" value="3" />
+    <option name="INSERT_INTO_NL" value="2" />
+    <option name="SET_EL_LINE" value="1" />
+    <option name="SET_EL_COMMA" value="2" />
+    <option name="SET_ALIGN_EQUAL_SIGN" value="false" />
+    <option name="WITH_EL_LINE" value="101" />
+    <option name="WITH_EL_COMMA" value="2" />
+    <option name="SELECT_EL_LINE" value="101" />
+    <option name="SELECT_EL_COMMA" value="2" />
+    <option name="SELECT_USE_AS_WORD" value="1" />
+    <option name="SELECT_ALIGN_AS" value="false" />
+    <option name="FROM_EL_LINE" value="1" />
+    <option name="FROM_EL_COMMA" value="2" />
+    <option name="FROM_INDENT_JOIN" value="false" />
+    <option name="FROM_ONLY_JOIN_INDENT" value="2" />
+    <option name="FROM_PLACE_ON" value="10" />
+    <option name="WHERE_EL_LINE" value="1" />
+    <option name="ORDER_EL_LINE" value="1" />
+    <option name="ORDER_EL_COMMA" value="2" />
+  </PostgresCodeStyleSettings>
+  <codeStyleSettings language="PostgreSQL">
+    <indentOptions>
+      <option name="INDENT_SIZE" value="2" />
+      <option name="CONTINUATION_INDENT_SIZE" value="4" />
+      <option name="TAB_SIZE" value="2" />
+    </indentOptions>
+  </codeStyleSettings>
+</code_scheme>
